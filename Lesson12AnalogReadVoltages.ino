@@ -14,6 +14,7 @@ int br = 9600;
 int waitT = 100;
 float volts;
 int redLED = 11;
+int analog;
 
 void setup() {
   // put your setup code here, to run once:
@@ -40,7 +41,11 @@ void loop() {
   Serial.print("pot:  ");
   Serial.print(potVal);
   Serial.print("Voltage:  ");
-  Serial.println(volts);
-  analogWrite(redLED,potVal);
+  Serial.print(volts);
+  analog=(255./1023)*potVal;
+  analogWrite(redLED,analog);
+  Serial.print("Analog Value:  ");
+  Serial.println(analog);
+  
   delay(waitT);
 }
